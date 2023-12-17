@@ -1,0 +1,54 @@
+{% extends "bbase.html" %}
+
+{% block title %}Edit Milk Record{% endblock title %}
+
+{% block content %}
+<div class="col-md-12">
+    <form method="POST" class="post-form" action="/update/{{ milk_record.id }}">  
+    {% csrf_token %}  
+    <div class="container">   
+        <div class="col-12">  
+            <h3>Update Milk Record Details</h3>  
+        </div> 
+        <div class="mb-3"> 
+            <label>Record ID:</label>  
+            <input type="text" class="form-control" name="id" id="id_id" required maxlength="20" value="{{ milk_record.id }}" readonly/>    
+        </div> 
+        <div class="mb-3"> 
+            <label>pH:</label>  
+            <input type="number" class="form-control" name="pH" id="id_pH" required value="{{ milk_record.pH }}" />  
+        </div> 
+        <div class="mb-3"> 
+            <label>Temperature:</label>  
+            <input type="number" class="form-control" name="temperature" id="id_temperature" required value="{{ milk_record.temperature }}" />  
+        </div> 
+        <div class="mb-3"> 
+            <label>Taste:</label>  
+            <input type="number" class="form-control" name="taste" id="id_taste" required value="{{ milk_record.taste }}" />  
+        </div> 
+        <div class="mb-3"> 
+            <label>Odor:</label>  
+            <input type="number" class="form-control" name="odor" id="id_odor" required value="{{ milk_record.odor }}" />  
+        </div> 
+        <div class="mb-3"> 
+            <label>Fat:</label>  
+            <input type="number" class="form-control" name="fat" id="id_fat" required value="{{ milk_record.fat }}" />  
+        </div> 
+        <div class="mb-3"> 
+            <label>Turbidity:</label>  
+            <input type="number" class="form-control" name="turbidity" id="id_turbidity" required value="{{ milk_record.turbidity }}" />  
+        </div> 
+        <div class="mb-3"> 
+            <label>Colour:</label>  
+            <input type="text" class="form-control" name="colour" id="id_colour" required value="{{ milk_record.colour }}" />  
+        </div> 
+        <div class="mb-3"> 
+            <label>Grade:</label>  
+            <input type="number" class="form-control" name="grade" id="id_grade" required value="{{ milk_record.grade }}" />  
+        </div> 
+        <div class="mb-3"> 
+            <button type="submit" class="btn btn-success btn-lg">Update</button>  
+        </div> 
+    </div>  
+    </form>  
+{% endblock content %}

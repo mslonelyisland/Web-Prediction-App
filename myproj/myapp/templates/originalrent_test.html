@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rent Prediction Result</title>
+</head>
+<body>
+    <h2>Predicted Rent</h2>
+    {% if prediction %}
+        <p>The predicted rent is: {{ prediction }}</p>
+    {% else %}
+        <p>No prediction available.</p>
+    {% endif %}
+    <a href="/">Go back to form</a>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!-- FINAL HTML -->
+
+<!DOCTYPE html>
+<html>
+<head> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <link rel="stylesheet" href="style_index.css"> -->
+</head>
+<style>
+    body{
+        background: rgb(244,244,244); 
+        margin: 0;
+    }
+    #box{
+      background: white;
+      width: 50%;
+      padding: 2%;
+      margin-left: 23%;
+      margin-top: 6%;
+      margin-right: 2%;
+      box-shadow: 0px 0px 19px 5px #e6e5e5;
+      border-radius: 20px;
+      margin-bottom: 3%;
+    }
+    #sidebar{
+        background:rgb(37,48,69); 
+        padding: 30px;
+        width: 15%;
+        position:fixed;
+        top: 0px;
+        bottom: 0px;
+        /* for borders */
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    #welcome{
+        position: fixed;
+        top: 0;
+        margin-left: 22%; 
+    }
+    .text{
+        color:rgb(37,48,69);
+    }
+    li{
+        list-style: none;
+        font-size: 20px;
+        color: white;
+    }
+    h1{
+        color: #17BE9F;
+    }
+    h2{
+      color: rgb(37, 48, 69);
+    }
+    .sidebtn_reg {
+        padding: 7%;
+        width: 111%;
+        background: rgb(244,244,244);
+        border-bottom-left-radius: 30px;
+        border-top-left-radius: 30px;
+    }
+    .sidebtn_class{
+        color: rgb(37,48,69); /* Ensures text color is white*/
+    }
+    .sidebtn_home{
+        color: rgb(37,48,69); /* Ensures text color is white */
+    }
+    /* Style for all anchor tags inside .sidebtn_class */
+    .sidebtn_reg a {
+        color:rgb(37,48,69); /* Makes the text color  */
+        text-decoration: none; /* Removes underline */
+        font-weight: bold; /* Makes the font bold */
+    }
+
+    /* Optional: Change font family for a more aesthetic look */
+   
+    #toggleSidebarBtn {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+    }
+        /* Style for anchor tags inside the sidebar buttons */
+    .sidebtn_reg a{
+        display: inline-block;
+        transition: transform 0.5s ease; /* Smooth transition for movement */
+        /* padding: 7%; */
+        text-decoration: none; /* Removes underline */
+    }
+
+    /* Hover effect */
+    .sidebtn_reg a:hover{
+        transform: translateX(10px); /* Moves text to the left on hover */
+    }
+        /* Style for Home and Regression buttons */
+    .sidebtn_home a, .sidebtn_class a {
+        color: white; /* Set text color to white */
+        display: inline-block;
+        transition: transform 0.3s ease; /* Smooth transition for movement */
+        text-decoration: none; /* Removes underline */
+    }
+
+    /* Hover effect for Home and Regression buttons */
+    .sidebtn_home a:hover, .sidebtn_class a:hover {
+        transform: translateX(10px); /* Moves text to the left on hover */
+        color: white; /* Keep text color white on hover */
+    }
+
+        /* This ensures that the text and icons are aligned horizontally inside the sidebar buttons */
+    .sidebtn_class, .sidebtn_home, .sidebtn_reg {
+        display: flex; /* Enables flexbox */
+        align-items: center; /* Centers items vertically */
+        justify-content: start; /* Aligns items to the start of the button */
+        padding-left: 20px; /* Adjust left padding to align text */
+        margin-bottom: 10px; /* Adds margin to the bottom of each button */
+    }
+
+    /* Adjusts the icon size and spacing to align with the text */
+    .sidebtn_class .icon, .sidebtn_home .icon, .sidebtn_reg .icon {
+        margin-right: 10px; /* Adds spacing between the icon and the text */
+        width: 20px; /* Sets a fixed width for the icon */
+        text-align: center; /* Ensures the icon is centered within its space */
+    }
+
+    /* Ensures the anchor tags fill the button space for better clickability */
+    .sidebtn_class a, .sidebtn_home a, .sidebtn_reg a {
+        width: 100%; /* Anchor tag should fill the button */
+        display: flex; /* Enables flexbox */
+        align-items: center; /* Centers text vertically */
+        justify-content: flex-start; /* Aligns text to the start */
+    }
+    .testbutton {
+        font-family: 'times new roman';
+        font-weight: bold;
+        color: #FFFFFF !important;
+        font-size: 14px;
+        text-shadow: 0px 0px 0px #7CACDE;
+        box-shadow: 1px 1px 2px #EFF0F0;
+        padding: 10px 25px;
+        border-radius: 15px;
+        border: 0px solid #3866A3;
+        background: #253045;
+    }
+    .testbutton:hover {
+        color: #14396A !important;
+        background: #17BE9F;
+    }
+    
+</style>
+
+<body>
+    <div class="container">
+        <div id="welcome"> <h1 class="text"> Welcome, Weluna Rose!</h1> </div>
+        <div id="sidebar">
+            <h1> Big Data </h1>
+            <div class="sidebtn_home" id="home"><a href="index.html"><span class="icon"></span> Home</a></div>
+            <div class="sidebtn_class" id="classification"><a href="classification.html"><span class="icon"></span> Classification</a></div>
+            <div class="sidebtn_reg" id="regression"><a href="regression.html"><span class="icon"></span> Regression</a></div>
+        </div>
+
+        <div id="box">
+            <h2>Predicted Rent</h2>
+            {% if prediction %}
+                <p>The predicted rent is: {{ prediction|default:"N/A"|floatformat:"0" }}</p>
+            {% else %}
+                <p>No prediction available.</p>
+            {% endif %}
+            <a class="testbutton" href="regression.html" id = "back">Go back to form</a>
+        </div>
+    <script>
+                // JavaScript code to handle redirection
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the current URL path
+            var currentPath = window.location.pathname;
+            
+            // Check if the current page is the "Regression" page
+            if (currentPath === "/predict_rent/") {
+            // Find the "Classification" link by its ID
+            var classificationLink = document.getElementById("back");
+            
+            // Add a click event listener to the "Classification" link
+            classificationLink.addEventListener("click", function (event) {
+                // Prevent the default link behavior
+                event.preventDefault();
+                
+                // Redirect to the "Classification" page
+                window.location.href = "/regression/";
+            });
+            }
+            if (currentPath === "/predict_rent/") {
+            // Find the "Classification" link by its ID
+            var classificationLink = document.getElementById("home");
+            
+            // Add a click event listener to the "Classification" link
+            classificationLink.addEventListener("click", function (event) {
+                // Prevent the default link behavior
+                event.preventDefault();
+                
+                // Redirect to the "Classification" page
+                window.location.href = "/index/";
+            
+        });
+        if (currentPath === "/predict_rent/") {
+            // Find the "Classification" link by its ID
+            var classificationLink = document.getElementById("classification");
+            
+            // Add a click event listener to the "Classification" link
+            classificationLink.addEventListener("click", function (event) {
+                // Prevent the default link behavior
+                event.preventDefault();
+                
+                // Redirect to the "Classification" page
+                window.location.href = "/classification/";
+            
+        }); 
+        if (currentPath === "/predict_rent/") {
+            // Find the "Classification" link by its ID
+            var classificationLink = document.getElementById("regression");
+            
+            // Add a click event listener to the "Classification" link
+            classificationLink.addEventListener("click", function (event) {
+                // Prevent the default link behavior
+                event.preventDefault();
+                
+                // Redirect to the "Classification" page
+                window.location.href = "/regression/";
+            });
+            }
+
+    }}});
+            document.addEventListener("DOMContentLoaded", function() {
+            // Define your icons/symbols
+            var icons = {
+                'home': '🏠',  // Home icon
+                'classification': '📊', // Classification icon
+                'regression': '📈' // Regression icon
+            };
+
+            // Assign icons to buttons
+            document.querySelectorAll('.sidebtn_home .icon, .sidebtn_class .icon, .sidebtn_reg .icon').forEach(function(span) {
+                var id = span.parentElement.parentElement.id; // Get the id of the parent div
+                span.textContent = icons[id]; // Set the icon text
+            });
+        });
+</script>
+</body>
+</html>
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Milk Quality Analysis</title>
+    <!-- Include jQuery for JavaScript functionality -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #chart-container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div id="chart-container">
+        <h2>Class Distribution in Grade</h2>
+        <!-- This div will hold the chart -->
+        <div id="class-distribution-chart"></div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Get the HTML for the class distribution chart from the Django context
+            var classDistributionHTML = "{{ class_distribution_html|safe }}";
+
+            // Insert the chart HTML into the chart container
+            $('#class-distribution-chart').html(classDistributionHTML);
+        });
+    </script>
+</body>
+</html>

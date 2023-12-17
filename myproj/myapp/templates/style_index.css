@@ -1,0 +1,77 @@
+/* HOME CSS */
+body{
+    background: rgb(244,244,244); 
+    margin: 0;
+}
+#box{
+    background:white;
+    padding: 27%;
+    margin: 5% 1% 1% 22%;
+    box-shadow: 0px 0px 19px 5px #e6e5e5;
+    border-radius: 20px; 
+}
+#sidebar{
+    background:rgb(37,48,69); 
+    padding: 30px;
+    width: 15%;
+    position:fixed;
+    top: 0px;
+    bottom: 0px;
+    /* for borders */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#welcome{
+    position: fixed;
+    top: 0;
+    margin-left: 22%; 
+}
+.text{
+    color:rgb(37,48,69);
+}
+li{
+    list-style: none;
+    font-size: 20px;
+    color: white;
+}
+h1{
+    color: #a84c3e;
+}
+.sidebtn_home{
+    padding: 7%;
+    width: 111%;
+    background: rgb(244,244,244);
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
+}
+
+
+/* .sidebar {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 0;
+    width: 200px;
+    height: 100vh;
+  }
+  .sidebar a {
+    padding: 15px 30px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.3s;
+  }
+  .sidebar a:hover {
+    background-color: #34495e;
+    border-left: 3px solid #f1c40f;
+  }
+  .sidebar a.active {
+    background-color: #34495e;
+    border-left: 3px solid #f1c40f;
+    border-radius: 0 30px 30px 0;
+  } */
+/* CLASSIFICATION CSS */
+
+
+/* REGRESSION CSS */

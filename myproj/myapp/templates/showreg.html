@@ -1,0 +1,49 @@
+{% extends "basereg.html" %}
+  
+{% block title %}House Rent Dataset{% endblock title %}
+  
+{% block content %}
+<div class="col-md-12">
+    <div class="table-responsive">
+        <table id="bootstrapdatatable" class="table table-striped table-bordered" width="100%">
+            <thead>
+                <tr>
+                    <th>Posted On</th>
+                    <th>BHK</th> 
+                    <th>Rent</th>
+                    <th>Size</th>
+                    <th>Floor</th>
+                    <th>Area Type</th>
+                    <th>Area Locality</th>
+                    <th>City</th>
+                    <th>Furnishing Status</th>
+                    <th>Tenant Preferred</th>
+                    <th>Bathroom</th>
+                    <th>Point of Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for house_rent_dataset in rent %}
+                <tr>
+                    <td>{{ house_rent_dataset.Posted_On}}</td>
+                    <td>{{ house_rent_dataset.BHK }}</td>
+                    <td>{{ house_rent_dataset.Rent }}</td>
+                    <td>{{ house_rent_dataset.Size }}</td>
+                    <td>{{ house_rent_dataset.Floor }}</td>
+                    <td>{{ house_rent_dataset.Area_Type }}</td>
+                    <td>{{ house_rent_dataset.Area_Locality }}</td>
+                    <td>{{ house_rent_dataset.City }}</td>
+                    <td>{{ house_rent_dataset.Furnishing_Status }}</td>
+                    <td>{{ house_rent_dataset.Tenant_Preferred }}</td>
+                    <td>{{ house_rent_dataset.Bathroom }}</td>
+                    <td>{{ house_rent_dataset.Point_of_Contact }}</td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="12">No records found</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+{% endblock content %}

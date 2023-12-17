@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>House Rent Prediction</title>
+  </head>
+  <body>
+    <h2>House Rent Prediction Form</h2>
+    <form action="/predict_rent/" method="post">
+        {% csrf_token %}
+        <label for="BHK">BHK:</label><br />
+        <input type="number" id="BHK" name="BHK" required><br />
+  
+        <label for="Size">Size (in sq ft):</label><br />
+        <input type="number" id="Size" name="Size" required /><br />
+  
+        <label for="Floor">Floor:</label><br />
+        <input type="number" id="Floor" name="Floor" required /><br />
+        
+        <label for="Bathroom">Bathroom:</label><br />
+        <input type="number" id="Bathroom" name="Bathroom" required /><br />
+
+        <label for="Area Locality">Area Locality:</label><br />
+        <input type="text" id="Area Locality" name="Area Locality" required /><br />
+
+        <label for="FurnishingStatus">Furnishing Status:</label><br />
+        <select id="FurnishingStatus" name="FurnishingStatus" required>
+            <option value="Furnished">Furnished</option>
+            <option value="Semi-Furnished">Semi-Furnished</option>
+            <option value="Unfurnished">Unfurnished</option>
+        </select><br />
+        
+        <label for="AreaType">Area Type:</label><br />
+        <select id="AreaType" name="Area Type" required>
+            <option value="Super Area">Super Area</option>
+            <option value="Carpet Area">Carpet Area</option>
+        </select><br />
+
+        <label for="City">City:</label><br />
+        <select id="City" name="City" required>
+            <option value="Super Area">Delhi</option>
+            <option value="Carpet Area">Chennai</option>
+            <option value="Carpet Area">Hyderabad</option>
+            <option value="Carpet Area">Bangalore</option>
+            <option value="Carpet Area">Mumbai</option>
+            <option value="Carpet Area">Kolkata</option>
+            
+        </select><br />
+
+  
+        <input type="submit" value="Predict Rent" />
+      </form>
+  </body>
+</html>
+
